@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  #The name of the Kubernetes Service to be created 
+  #in the Kubernetes cluster
+  name: softiwa-ui-service-test 
+  namespace: softiwa-ui
+spec:
+  selector:
+    app: softiwa-ui-test
+  type: ClusterIP #Type of the Kubernetes Service
+  ports:
+  - protocol: TCP
+    port: 80 #Service port
+    targetPort: 80 #The port for the React.js application container

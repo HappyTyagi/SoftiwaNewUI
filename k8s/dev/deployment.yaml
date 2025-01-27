@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: softiwa-ui-dev #The name of the Kubernetes 
+        #Deployment to be created in the Kubernetes cluster
+  namespace: softiwa-ui      
+  labels:
+    app: softiwa-ui-dev
+spec:
+  replicas: 1 #The number of pods to be created in the 
+   #Kubernetes cluster for the React.js application container
+  selector:
+    matchLabels:
+      app: softiwa-ui-dev
+  template:
+    metadata:
+      labels:
+        app: softiwa-ui-dev
+      annotations:
+        kubernetes.io/change-cause: "Updated deployment"  
+    spec:
+      containers:
+      - name: softiwa-ui-dev #The name of the react.js application container
+        #The Docker image for building the React.js application container
+        image: iamlavityagi/softiwa-ui-dev:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80 #The port for the React.js application container
